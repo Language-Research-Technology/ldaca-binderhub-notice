@@ -2,9 +2,14 @@
 <html>
   <head>
     <meta charset="UTF-8" />
-    <meta http-equiv="refresh" content="0;url=/" />
     <script>
-      window.location.replace('/')
+      // GitHub Pages serves this file for unknown paths. Preserve the full URL
+      // and hand it to index.html so Vue Router can resolve the intended route.
+      ;(() => {
+        const redirect = `${window.location.pathname}${window.location.search}${window.location.hash}`
+        const target = `/?__redirect=${encodeURIComponent(redirect)}`
+        window.location.replace(target)
+      })()
     </script>
     <title>Redirecting...</title>
   </head>
