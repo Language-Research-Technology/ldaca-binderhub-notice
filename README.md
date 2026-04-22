@@ -63,7 +63,7 @@ openstack recordset create \
   --type TXT \
   --record '"_github-pages-challenge-Language-Research-Technology=<<textCode>>"' \
   <<zoneID>> \
-  notice-test.atap-binder.cloud.edu.au
+  notice-test
 ```
 
 To get the verification code:

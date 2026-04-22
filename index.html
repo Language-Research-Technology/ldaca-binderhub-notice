@@ -4,6 +4,25 @@
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script>
+      ;(() => {
+        const url = new URL(window.location.href)
+        const redirect = url.searchParams.get('__redirect')
+
+        if (!redirect) return
+
+        url.searchParams.delete('__redirect')
+        const restoredPath = decodeURIComponent(redirect)
+
+        if (!restoredPath.startsWith('/')) return
+
+        const remainingQuery = url.searchParams.toString()
+        const joiner = restoredPath.includes('?') ? '&' : '?'
+        const destination = `${restoredPath}${remainingQuery ? `${joiner}${remainingQuery}` : ''}`
+
+        window.history.replaceState(null, '', destination)
+      })()
+    </script>
     <meta
       name="description"
       content="This BinderHub service has been decommissioned. Choose a new Binder destination while preserving your launch URL details."
