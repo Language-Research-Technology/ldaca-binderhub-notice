@@ -37,3 +37,38 @@ npm run preview
 
 - Netlify: `public/_redirects` is included with `/* /index.html 200`.
 - Generic static hosts: ensure unknown routes are rewritten to `index.html`.
+
+
+## This page uses Nectar as a DNS 
+
+the SOA is atap-binder.cloud.edu.au.
+
+My custom domain is
+
+notice-test.atap-binder.cloud.edu.au 
+
+# 1. Create CNAME record pointing to your GitHub Pages
+```bash
+openstack recordset create \
+  --type CNAME \
+  --record language-research-technology.github.io \
+  <<zoneID>> \
+  notice-test.atap-binder.cloud.edu.au
+```
+
+# 2. Create TXT record for GitHub verification
+# First, get the verification value from GitHub, then run:
+```bash
+openstack recordset create \
+  --type TXT \
+  --record '"_github-pages-challenge-Language-Research-Technology=<<textCode>>"' \
+  <<zoneID>> \
+  notice-test.atap-binder.cloud.edu.au
+```
+
+To get the verification code:
+
+Go to your repo → Settings → Pages
+Enter notice-test.atap-binder.cloud.edu.au in the "Custom domain" field
+GitHub will display the TXT record value (something like _github-pages-challenge-Language-Research-Technology=xxxxx)
+Copy that and use it in the TXT command above
