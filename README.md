@@ -51,9 +51,9 @@ notice-test.atap-binder.cloud.edu.au
 ```bash
 openstack recordset create \
   --type CNAME \
-  --record language-research-technology.github.io \
+  --record language-research-technology.github.io. \
   <<zoneID>> \
-  notice-test.atap-binder.cloud.edu.au
+  binderhub
 ```
 
 # 2. Create TXT record for GitHub verification
@@ -61,14 +61,7 @@ openstack recordset create \
 ```bash
 openstack recordset create \
   --type TXT \
-  --record '"_github-pages-challenge-Language-Research-Technology=<<textCode>>"' \
+  --record '"<<textCode>>"' \
   <<zoneID>> \
-  notice-test
+  _github-pages-challenge-Language-Research-Technology
 ```
-
-To get the verification code:
-
-Go to your repo → Settings → Pages
-Enter notice-test.atap-binder.cloud.edu.au in the "Custom domain" field
-GitHub will display the TXT record value (something like _github-pages-challenge-Language-Research-Technology=xxxxx)
-Copy that and use it in the TXT command above
