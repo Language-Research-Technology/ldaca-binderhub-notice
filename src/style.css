@@ -80,6 +80,12 @@ h1 {
   background: #f7fbf6;
 }
 
+.chooser {
+  margin: 1rem 0 0;
+  color: var(--ink);
+  font-weight: 600;
+}
+
 .label {
   margin: 0 0 0.4rem;
   font-size: 0.9rem;
@@ -171,6 +177,11 @@ code {
   max-width: min(46vw, 360px);
 }
 
+.ardc-logo {
+  height: 112px;
+  max-width: min(56vw, 440px);
+}
+
 @keyframes card-enter {
   from {
     opacity: 0;
@@ -190,5 +201,10 @@ code {
 
   .partner-logo {
     height: 60px;
+  }
+
+  .ardc-logo {
+    height: 84px;
+    max-width: min(70vw, 360px);
   }
 }
